@@ -20,8 +20,8 @@ jobs:
       - name: Deploy # 将打包内容发布到 github page
         uses: JamesIves/github-pages-deploy-action@v4 # 使用别人写好的 actions
         with:  # 自定义环境变量
-          TOKEN: ${{ secrets.VUE_DEMO }} # project
-          BRANCH: demo
-          FOLDER: dist
-          REPOSITORY_NAME: u-madara/u-madara.github.io
-          TARGET_FOLDER: vueDemo 
+          token: ${{ secrets.VUE_DEMO }} # project
+          branch: demo
+          folder: dist
+          repository-name: u-madara/u-madara.github.io
+          target-folder: vue-demo 
