@@ -23,5 +23,5 @@ jobs:
           TOKEN: ${{ secrets.VUE_DEMO }} # project
           BRANCH: demo
           FOLDER: dist
-          REPOSITORY_NAME: tao-xiaoyu/tao-xiaoyu.github.io
+          REPOSITORY_NAME: u-madara/u-madara.github.io
           TARGET_FOLDER: vue-demo 
