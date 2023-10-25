@@ -28,9 +28,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import router from '@/router'
+import { demo1 } from '@/apis/demo1'
+import http from '@/apis/http'
+
 
 interface RuleForm {
   username: string,
@@ -60,6 +63,9 @@ const onLogin = async (formEl: FormInstance | undefined) => {
   console.log(formEl)
   await formEl.validate((valid, fields) => {
     if (valid) {
+      http.post('/login', ruleForm).then(res => {
+        console.log(res)
+      })
       console.log('submit!')
     } else {
       console.log('error submit!', fields)
@@ -67,7 +73,9 @@ const onLogin = async (formEl: FormInstance | undefined) => {
   })
 }
 
-const onRegistry = () => {
+const onRegistry = async () => {
+  const a = await demo1
+  console.log(a)
   router.push('/registry')
 }
 
