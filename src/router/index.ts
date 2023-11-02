@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import routerComponents from '@/views/index'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/registry',
     name: 'registry',
     component: () => import('@/views/Registry.vue')
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/Home.vue')
   }
 ]
 

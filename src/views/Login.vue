@@ -32,13 +32,14 @@ import { onMounted, reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import router from '@/router'
 import { demo1 } from '@/apis/demo1'
-import http from '@/apis/http'
+import useUserStore from '@/store/user'
 
-
+const userStore = useUserStore()
 interface RuleForm {
   username: string,
   password: string,
 }
+
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<RuleForm>({
   username: '',
@@ -48,12 +49,14 @@ const ruleForm = reactive<RuleForm>({
 const rules = reactive<FormRules<RuleForm>>({
   username: [
     {
-      required: true, message: '账号不能为空'
+      required: true,
+      message: '账号不能为空'
     }
   ],
   password: [
     {
-      required: true, message: '密码不能为空'
+      required: true,
+      message: '密码不能为空'
     }
   ]
 })
@@ -63,10 +66,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
   console.log(formEl)
   await formEl.validate((valid, fields) => {
     if (valid) {
-      http.post('/login', ruleForm).then(res => {
-        console.log(res)
-      })
-      console.log('submit!')
+      userStore.login(ruleForm)
     } else {
       console.log('error submit!', fields)
     }
@@ -82,16 +82,18 @@ const onRegistry = async () => {
 </script>
 
 <style lang="scss" scoped>
-.login{
+.login {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #5cdbd3;
-  .box-card{
+
+  .box-card {
     width: 30%;
-    .form-bottom{
+
+    .form-bottom {
       text-align: center;
     }
   }
