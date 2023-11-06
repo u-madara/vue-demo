@@ -5,8 +5,8 @@ import router from '@/router'
 const useUserStore = defineStore('user',{
   state: () => {
     return {
-      user: JSON.parse(localStorage.getItem('user') || '{}'),
-      menus: JSON.parse(localStorage.getItem('menus') || '{}')
+      user: localStorage.getItem('user') || '',
+      menus: JSON.parse(localStorage.getItem('menus') || '[]')
     }
   },
   actions: {
@@ -16,7 +16,7 @@ const useUserStore = defineStore('user',{
         this.user = result.data.user
         this.menus = result.data.menus
         localStorage.setItem('user', result.data.user)
-        localStorage.setItem('menus', result.data.menus)
+        localStorage.setItem('menus', JSON.stringify(result.data.menus))
         await router.push('/home')
       }
     }
