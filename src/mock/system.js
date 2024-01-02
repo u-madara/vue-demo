@@ -10,19 +10,19 @@ const systems = [
         path: '/home/users',
         name: 'users',
         title: '用户管理',
-        components: 'routerComponents.Users'
+        componentName: 'Users'
       },
       {
         path: '/home/menus',
         name: 'menus',
         title: '菜单管理',
-        components: 'routerComponents.Menus'
+        componentName: 'Menus'
       },
       {
         path: '/home/auths',
         name: 'auths',
         title: '角色管理',
-        components: 'routerComponents.Auths'
+        componentName: 'Auths'
       }
     ]
   }

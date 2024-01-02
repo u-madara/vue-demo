@@ -29,13 +29,19 @@ const router = createRouter({
   routes
 })
 
+function dealRouter(data){
+  console.log(data)
+
+}
+
 router.beforeEach(async (to, from, next) => {
   const UserStore = await useUserStore()
   console.log(UserStore.menus)
   if (UserStore.menus) {
     UserStore.menus.forEach(item => {
       console.log(item)
-      router.addRoute('home', item)
+
+      // router.addRoute('home', item)
     })
     console.log(router)
     next()
